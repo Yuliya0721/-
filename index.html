@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Психологическая игра</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #dice {
+            width: 100px;
+            height: 100px;
+            font-size: 36px;
+            line-height: 100px;
+            margin: 20px auto;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        .draggable {
+            width: 80px;
+            height: 80px;
+            cursor: grab;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Психологическая игра</h1>
+    <p>Нажми на кубик, чтобы выбросить число:</p>
+    <div id="dice">🎲</div>
+    
+    <h3>Фишки для перемещения</h3>
+    <img src="https://via.placeholder.com/80" class="draggable" style="top: 200px; left: 300px;">
+    <img src="https://via.placeholder.com/80" class="draggable" style="top: 300px; left: 400px;">
+    <img src="https://via.placeholder.com/80" class="draggable" style="top: 400px; left: 500px;">
+
+    <script>
+        // Кубик с числами 1-6
+        const dice = document.getElementById('dice');
+        dice.addEventListener('click', () => {
+            const randomNumber = Math.floor(Math.random() * 6) + 1;
+            dice.textContent = randomNumber;
+        });
+
+        // Перетаскиваемые фишки
+        const draggables = document.querySelectorAll('.draggable');
+        draggables.forEach(item => {
+            item.onmousedown = function(event) {
+                event.preventDefault();
+                let shiftX = event.clientX - item.getBoundingClientRect().left;
+                let shiftY = event.clientY - item.getBoundingClientRect().top;
+
+                function moveAt(pageX, pageY) {
+                    item.style.left = pageX - shiftX + 'px';
+                    item.style.top = pageY - shiftY + 'px';
+                }
+
+                function onMouseMove(event) {
+                    moveAt(event.pageX, event.pageY);
+                }
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                item.onmouseup = function() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    item.onmouseup = null;
+                };
+            };
+        });
+    </script>
+</body>
+</html>

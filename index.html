@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Игра</title>
+    <title>Психологическая игра</title>
     <style>
         body {
             text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #dice {
+            width: 100px;
+            height: 100px;
+            font-size: 36px;
+            line-height: 100px;
+            margin: 20px auto;
+            border: 2px solid black;
+            cursor: pointer;
         }
         .draggable {
             width: 80px;
@@ -19,20 +29,21 @@
     <h1>Психологическая игра</h1>
     <p>Нажми на кубик, чтобы выбросить число:</p>
     <div id="dice">🎲</div>
-
-    <!-- https://github.com/Yuliya0721/-/blob/main/photo_2024-12-18_10-15-03%20(2).jpg?raw=true-->
-    <img src="https://raw.githubusercontent.com/твое-имя/my-game-site/main/piece1.png" 
-         class="draggable" style="top:200px; left:300px;">
+    
+    <h3>Фишки для перемещения</h3>
+    <img src="https://via.placeholder.com/80" class="draggable" style="top: 200px; left: 300px;">
+    <img src="https://via.placeholder.com/80" class="draggable" style="top: 300px; left: 400px;">
+    <img src="https://via.placeholder.com/80" class="draggable" style="top: 400px; left: 500px;">
 
     <script>
-        // Скрипт для кубика
+        // Кубик с числами 1-6
         const dice = document.getElementById('dice');
         dice.addEventListener('click', () => {
             const randomNumber = Math.floor(Math.random() * 6) + 1;
             dice.textContent = randomNumber;
         });
 
-        // Скрипт для перетаскивания фишки
+        // Перетаскиваемые фишки
         const draggables = document.querySelectorAll('.draggable');
         draggables.forEach(item => {
             item.onmousedown = function(event) {

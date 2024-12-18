@@ -10,29 +10,42 @@
             overflow: hidden;
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f4f4f9;
+        }
+
+        /* Контейнер для игрового поля */
+        #game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
         }
 
         /* Игровое поле */
         #game-board {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: url('https://github.com/Yuliya0721/-/blob/main/photo_2024-12-18_10-15-03%20(2).jpg?raw=true') no-repeat center center/cover;
-}
+            position: relative;
+            width: 800px; /* Ширина игрового поля */
+            height: 800px; /* Высота игрового поля */
+            background: url('ВСТАВЬ_ССЫЛКУ_СЮДА') no-repeat center center/contain;
+            background-color: #ffffff;
+            border: 2px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
         /* Кубик */
         #dice {
             position: absolute;
-            top: 5%;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
-            line-height: 80px;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
             text-align: center;
             font-size: 2rem;
             background-color: #fff;
-            border: 2px solid #000;
+            border: 2px solid #333;
             border-radius: 10px;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -40,13 +53,13 @@
         }
 
         #dice:hover {
-            background-color: #f8f8f8;
+            background-color: #f0f0f0;
         }
 
         /* Двигающиеся фишки */
         .draggable {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             cursor: grab;
             position: absolute;
             user-select: none;
@@ -58,15 +71,18 @@
     </style>
 </head>
 <body>
-    <!-- Игровое поле -->
-    <div id="game-board">
+    <!-- Контейнер для игрового поля -->
+    <div id="game-container">
         <!-- Кубик -->
         <div id="dice">🎲</div>
         
-        <!-- Фишки -->
-        <img src="https://via.placeholder.com/60" class="draggable" style="top: 50%; left: 20%;">
-        <img src="https://via.placeholder.com/60" class="draggable" style="top: 60%; left: 30%;">
-        <img src="https://via.placeholder.com/60" class="draggable" style="top: 70%; left: 40%;">
+        <!-- Игровое поле -->
+        <div id="game-board">
+            <!-- Фишки -->
+            <img src="https://via.placeholder.com/50" class="draggable" style="top: 50%; left: 20%;">
+            <img src="https://via.placeholder.com/50" class="draggable" style="top: 60%; left: 30%;">
+            <img src="https://via.placeholder.com/50" class="draggable" style="top: 70%; left: 40%;">
+        </div>
     </div>
 
     <script>
